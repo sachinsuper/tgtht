@@ -65,7 +65,7 @@ button{font:inherit}
 
 /* --------------------------------------------------------------- hero --- */
 
-.hero{position:relative;background:#d8d5d0;overflow:hidden}
+.hero{position:relative;background:#b8b3ae;overflow:hidden}
 
 .hero__track{position:relative;aspect-ratio:1600/1008}
 
@@ -277,13 +277,21 @@ button{font:inherit}
   .logo img{height:40px}
   .header-phone__num{font-size:21px}
 
-  /* Full-bleed but capped, so the hero never pushes the CTAs off-screen. */
-  .hero__track{aspect-ratio:auto;height:min(46vw,520px)}
+  /* Full-bleed up to the image's native 1600px width. Beyond that, cap and
+     centre it instead of stretching the box wider than the photo -- a fixed
+     height at full viewport width (the old rule here) forced object-fit:cover
+     to crop most of the photo away on anything wider than a laptop screen.
+     Scaling by aspect-ratio means the image is never cropped or upscaled
+     past its own resolution, at any width. */
+  .hero{ --hero-inset: max(0px, calc((100vw - 1600px) / 2)); }
+  .hero__track{max-width:1600px;margin-inline:auto;}
   .hero__caption{
     font-size:17px;padding:11px 30px 11px 24px;bottom:10%;
-    left:max(0px, calc((100vw - var(--wrap)) / 2));
+    left:calc(var(--hero-inset) + 24px);
   }
   .hero__nav{width:42px;height:42px}
+  .hero__nav--prev{left:calc(var(--hero-inset) + 8px)}
+  .hero__nav--next{right:calc(var(--hero-inset) + 8px)}
 
   .stores{padding:48px 0 52px}
   .section-title{font-size:38px;margin-bottom:26px}
