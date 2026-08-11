@@ -104,7 +104,11 @@ function templates(): array
                     ['key' => 'cb_thanks',    'label' => 'Thank-you message',   'type' => 'text',   'default' => 'Thanks! Our expert will call you shortly.'],
 
                     ['key' => 'web_on',       'label' => 'Show website tile',   'type' => 'toggle', 'default' => '1'],
-                    ['key' => 'web_logo',     'label' => 'Website tile logo',   'type' => 'image',  'default' => 'assets/img/logo.png'],
+                    // White-fill reversed mark -- the yellow tile behind this logo is the
+                    // same colour as the badge fill, so the standard logo would vanish
+                    // into it. This variant keeps the black wordmark and swaps the badge
+                    // to white so it reads against the yellow background.
+                    ['key' => 'web_logo',     'label' => 'Website tile logo',   'type' => 'image',  'default' => 'assets/img/logo-white.png'],
                     ['key' => 'web_title',    'label' => 'Website tile text',   'type' => 'text',   'default' => 'VISIT THE WEBSITE'],
                     ['key' => 'web_url',      'label' => 'Website link',        'type' => 'url',    'default' => 'https://www.technogym.com/in/'],
                 ],
