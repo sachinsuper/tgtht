@@ -1,0 +1,26 @@
+# Real credentials -- never committed. Copy config.sample.php -> config.php
+# on each server and edit it there. See config.sample.php for instructions.
+/config.php
+
+# One-time installer -- delete from each live server after running it, but
+# keep it in git so a fresh clone / new environment can still install.
+# (nothing to ignore here; listed for context)
+
+# Local SQLite test database
+/storage/*.sqlite
+/storage/*.sqlite-journal
+
+# User-uploaded images -- environment-specific content, not code.
+# The folder itself (and its .htaccess lockdown) stays tracked.
+/uploads/*
+!/uploads/.htaccess
+!/uploads/.gitkeep
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Packaging artifacts from local testing
+*.zip
+_to_delete/

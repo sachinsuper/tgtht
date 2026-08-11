@@ -1,0 +1,311 @@
+/* =========================================================================
+   Technogym landing page — public styles
+   Mobile-first. The design is a narrow mobile ad unit, so the mobile
+   layout is the reference; wider screens get a centred, roomier version.
+   ========================================================================= */
+
+:root{
+  --accent:#FFD100;
+  --dark:#1A1A1A;
+  --cream:#F5F2EC;
+  --ink:#111;
+  --muted:#5c5c5c;
+  --card:#fff;
+  --radius:10px;
+  --shadow:0 2px 14px rgba(0,0,0,.09);
+  --wrap:680px;
+  --font-display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:16px}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.hp{position:absolute!important;left:-9999px!important;opacity:0;height:0;width:0}
+
+/* ------------------------------------------------------------- header --- */
+
+.site-header{background:#fff;padding:12px 0}
+
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+
+.logo img{width:auto;height:34px;object-fit:contain}
+
+.header-phone{display:block;text-align:right;line-height:1.25}
+
+.header-phone__label{
+  display:block;font-size:9px;font-weight:700;letter-spacing:.09em;
+  color:var(--muted);text-transform:uppercase;
+}
+.header-phone__num{
+  display:block;font-size:17px;font-weight:700;letter-spacing:.01em;color:var(--ink);
+}
+
+/* --------------------------------------------------------------- hero --- */
+
+.hero{position:relative;background:#d8d5d0;overflow:hidden}
+
+.hero__track{position:relative;aspect-ratio:1600/1008}
+
+.hero__slide{
+  position:absolute;inset:0;opacity:0;transition:opacity .5s ease;
+  pointer-events:none;
+}
+.hero__slide.is-active{opacity:1;pointer-events:auto}
+.hero__slide img{width:100%;height:100%;object-fit:cover}
+
+.hero__caption{
+  position:absolute;left:0;bottom:14%;
+  background:rgba(60,60,60,.72);color:#fff;
+  font-family:var(--font-display);font-size:14px;font-weight:600;
+  letter-spacing:.11em;text-transform:uppercase;
+  padding:9px 22px 9px 18px;
+}
+
+.hero__nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:34px;height:34px;border:0;border-radius:50%;
+  background:rgba(0,0,0,.38);color:#fff;
+  display:grid;place-items:center;cursor:pointer;
+  transition:background .2s;z-index:2;
+}
+.hero__nav:hover{background:rgba(0,0,0,.6)}
+.hero__nav svg{width:18px;height:18px}
+.hero__nav--prev{left:8px}
+.hero__nav--next{right:8px}
+
+.hero__dots{
+  position:absolute;left:50%;bottom:12px;transform:translateX(-50%);
+  display:flex;gap:7px;z-index:2;
+}
+.hero__dot{
+  width:8px;height:8px;padding:0;border:0;border-radius:50%;
+  background:rgba(255,255,255,.75);cursor:pointer;
+}
+.hero__dot.is-active{background:var(--accent)}
+
+/* ------------------------------------------------------------- stores --- */
+
+.stores{padding:30px 0 34px}
+
+.section-title{
+  display:flex;align-items:center;gap:10px;
+  margin:0 0 18px;
+  font-family:var(--font-display);
+  font-size:29px;font-weight:700;letter-spacing:.01em;text-transform:uppercase;
+}
+.section-title .dot{
+  width:11px;height:11px;border-radius:50%;background:var(--accent);flex:none;
+}
+
+.store-grid{display:grid;gap:22px}
+
+.store-card{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.store-card__media{aspect-ratio:16/9;background:#eee}
+.store-card__media img{width:100%;height:100%;object-fit:cover}
+
+.store-card__body{padding:16px 18px 14px}
+
+.store-card__city{
+  display:flex;align-items:center;gap:9px;margin:0 0 8px;
+  font-family:var(--font-display);
+  font-size:25px;font-weight:700;letter-spacing:.01em;text-transform:uppercase;
+}
+.store-card__city .pin{
+  width:15px;height:15px;border-radius:50%;flex:none;
+  background:var(--accent);
+  box-shadow:inset 0 0 0 3px #fff, inset 0 0 0 5px var(--dark);
+}
+
+.store-card__address{
+  margin:0 0 12px;font-size:13.5px;line-height:1.55;color:var(--muted);
+}
+
+.store-card__cta{
+  display:block;text-align:right;
+  font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:#B79300;
+}
+.store-card__cta:hover{color:var(--ink)}
+
+/* ------------------------------------------------------------ connect --- */
+
+.connect{background:var(--dark);color:#fff;padding:34px 0 30px}
+
+.connect__title{
+  margin:0 0 20px;
+  font-family:var(--font-display);
+  font-size:32px;font-weight:700;letter-spacing:.01em;text-transform:uppercase;
+}
+
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+.tile{
+  position:relative;
+  display:flex;align-items:flex-start;gap:11px;
+  background:var(--accent);color:var(--dark);
+  border-radius:6px;padding:16px 14px 34px;
+  min-height:118px;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.tile:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+
+.tile__icon{flex:none;width:24px;display:grid;place-items:center;margin-top:1px}
+.tile__icon svg{width:22px;height:22px}
+.tile__icon--wa svg{width:24px;height:24px}
+
+.tile__text{display:flex;flex-direction:column;gap:2px;min-width:0}
+
+/* Sized so "WHATSAPP US" and "VISIT THE WEBSITE" stay on one line down to
+   360 px, the way the design has them. */
+.tile__title{
+  font-size:clamp(10.5px, 3.05vw, 13.5px);
+  font-weight:800;letter-spacing:.03em;text-transform:uppercase;
+  line-height:1.25;white-space:nowrap;
+}
+.tile__title--center{width:100%;text-align:center}
+
+.tile__sub{
+  font-size:clamp(8.5px, 2.4vw, 10.5px);
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:#4a3f00;white-space:nowrap;
+}
+.tile__sub--big{
+  font-size:clamp(12px, 3.5vw, 15px);
+  font-weight:700;letter-spacing:0;color:var(--dark);text-transform:none;
+}
+
+.tile__arrow{
+  position:absolute;right:13px;bottom:10px;
+  font-size:16px;font-weight:700;line-height:1;
+}
+
+.tile--web{flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:18px 14px}
+.tile__logo{height:26px;width:auto;object-fit:contain}
+
+/* call-back form tile */
+.tile--form{align-items:flex-start}
+.tile__text--form{width:100%}
+
+.cb-form{display:flex;align-items:center;gap:8px;margin-top:8px}
+
+.cb-form__row{
+  position:relative;flex:1;min-width:0;
+  display:flex;align-items:center;
+  background:#fff;border-radius:4px;height:30px;padding-inline:8px;
+}
+.cb-form__cc{font-size:11.5px;color:#8a8a8a;flex:none;padding-right:5px}
+
+.cb-form__input{
+  flex:1;min-width:0;border:0;outline:0;background:transparent;
+  font-size:11.5px;color:var(--ink);height:100%;
+}
+.cb-form__input::placeholder{color:#a3a3a3}
+.cb-form__input:focus-visible{outline:0}
+.cb-form__row:focus-within{box-shadow:0 0 0 2px var(--dark)}
+
+.cb-form__btn{
+  position:absolute;right:13px;bottom:8px;
+  border:0;background:transparent;color:var(--dark);
+  font-size:16px;font-weight:700;line-height:1;cursor:pointer;padding:4px;
+}
+
+.cb-form__thanks{
+  margin:8px 0 0;font-size:11px;font-weight:600;line-height:1.4;color:#3d3300;
+}
+.tile--form.is-done .cb-form{display:none}
+
+.cb-form__error{
+  margin:7px 0 0;font-size:10.5px;font-weight:700;line-height:1.4;color:#8f1d1d;
+}
+
+/* -------------------------------------------------------------- footer -- */
+
+.site-footer{background:#000;color:#fff;padding:14px 0}
+
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+.footer-logo{height:22px;width:auto;object-fit:contain;flex:none}
+
+.footer-text{
+  flex:1;font-size:9.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:#9a9a9a;
+}
+.footer-phone{font-size:13px;font-weight:700;flex:none}
+
+/* --------------------------------------------------------- breakpoints -- */
+
+@media (max-width:400px){
+  .connect__title{font-size:27px}
+  .section-title{font-size:25px}
+  .tile{padding:14px 10px 32px;min-height:110px;gap:8px}
+  .footer-text{font-size:8px;letter-spacing:.1em}
+}
+
+@media (min-width:700px){
+  :root{--wrap:1080px}
+  .tile__title{font-size:14px}
+  .tile__sub{font-size:11px}
+  .tile__sub--big{font-size:16px}
+
+  .site-header{padding:16px 0}
+  .logo img{height:40px}
+  .header-phone__num{font-size:21px}
+
+  /* Full-bleed but capped, so the hero never pushes the CTAs off-screen. */
+  .hero__track{aspect-ratio:auto;height:min(46vw,520px)}
+  .hero__caption{
+    font-size:17px;padding:11px 30px 11px 24px;bottom:10%;
+    left:max(0px, calc((100vw - var(--wrap)) / 2));
+  }
+  .hero__nav{width:42px;height:42px}
+
+  .stores{padding:48px 0 52px}
+  .section-title{font-size:38px;margin-bottom:26px}
+  .store-grid{grid-template-columns:repeat(2,1fr);gap:26px}
+  .store-card__body{padding:20px 22px 18px}
+  .store-card__city{font-size:28px}
+  .store-card__address{font-size:14px;min-height:44px}
+
+  .connect{padding:52px 0 46px}
+  .connect__title{font-size:42px;margin-bottom:26px}
+  .tiles{grid-template-columns:repeat(4,1fr);gap:18px}
+  .tile{min-height:140px;padding:20px 16px 38px}
+  .tile__title{font-size:14px}
+
+  .footer-text{font-size:11px}
+  .footer-phone{font-size:15px}
+}
+
+@media (min-width:1000px){
+  .store-grid{gap:30px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}

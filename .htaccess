@@ -1,0 +1,49 @@
+# ---------------------------------------------------------------------------
+#  Landing pages — Apache config (shared hosting: cPanel, Hostinger, GoDaddy)
+# ---------------------------------------------------------------------------
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # If this folder is not the domain root, set it here.
+  # e.g. site lives at example.com/lp  ->  RewriteBase /lp/
+  # RewriteBase /
+
+  # Never rewrite real files or folders
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Leave the admin, uploads and assets alone
+  RewriteRule ^(admin|uploads|assets|includes|templates|storage)(/|$) - [L]
+
+  # /my-page  ->  index.php?p=my-page
+  RewriteRule ^([A-Za-z0-9_-]+)/?$ index.php?p=$1 [QSA,L]
+</IfModule>
+
+# Protect config and database files
+<FilesMatch "^(config\.php|composer\.(json|lock))$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg      "access plus 1 month"
+  ExpiresByType image/png       "access plus 1 month"
+  ExpiresByType image/webp      "access plus 1 month"
+  ExpiresByType image/svg+xml   "access plus 1 month"
+  ExpiresByType text/css        "access plus 1 week"
+  ExpiresByType text/javascript "access plus 1 week"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

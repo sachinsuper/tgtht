@@ -1,0 +1,5 @@
+# Serve images only. Never execute anything uploaded here.
+php_flag engine off
+<FilesMatch "\.(php|php\d|phtml|phar|cgi|pl|py|sh|htaccess)$">
+  Require all denied
+</FilesMatch>
