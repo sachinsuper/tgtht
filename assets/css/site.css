@@ -170,7 +170,7 @@ button{font:inherit}
   display:flex;align-items:flex-start;gap:11px;
   background:var(--accent);color:var(--dark);
   border-radius:6px;padding:16px 14px 34px;
-  min-height:118px;
+  min-height:118px;min-width:0;
   transition:transform .15s ease, box-shadow .15s ease;
 }
 .tile:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.35)}
@@ -181,19 +181,26 @@ button{font:inherit}
 
 .tile__text{display:flex;flex-direction:column;gap:2px;min-width:0}
 
-/* Sized so "WHATSAPP US" and "VISIT THE WEBSITE" stay on one line down to
-   360 px, the way the design has them. */
+/* Sized so "WHATSAPP US" and "VISIT THE WEBSITE" stay on one line on
+   nearly all phones (the clamp() shrinks the font as the viewport
+   narrows). white-space is left free to wrap rather than forced to
+   nowrap: on a real device the actual rendered text width can end up
+   a little wider than this math assumes (font metrics, letter-spacing,
+   a user's larger system font size), and a forced single line has
+   nowhere to go but push the whole grid column -- and the whole page
+   -- wider than the screen. Wrapping to two lines on that rare device
+   is a much smaller problem than the page breaking. */
 .tile__title{
   font-size:clamp(10.5px, 3.05vw, 13.5px);
   font-weight:800;letter-spacing:.03em;text-transform:uppercase;
-  line-height:1.25;white-space:nowrap;
+  line-height:1.25;overflow-wrap:break-word;
 }
 .tile__title--center{width:100%;text-align:center}
 
 .tile__sub{
   font-size:clamp(8.5px, 2.4vw, 10.5px);
   font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  color:#4a3f00;white-space:nowrap;
+  color:#4a3f00;overflow-wrap:break-word;
 }
 .tile__sub--big{
   font-size:clamp(12px, 3.5vw, 15px);
