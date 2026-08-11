@@ -28,7 +28,7 @@ function templates(): array
                 'Header' => [
                     ['key' => 'logo_image',    'label' => 'Logo',                  'type' => 'image', 'default' => 'assets/img/logo.png'],
                     ['key' => 'header_label',  'label' => 'Small text above phone','type' => 'text',  'default' => 'TALK TO AN EXPERT'],
-                    ['key' => 'header_phone',  'label' => 'Phone number (shown)',  'type' => 'text',  'default' => '98200 52225'],
+                    ['key' => 'header_phone',  'label' => 'Phone number (shown)',  'type' => 'text',  'default' => '+91 98200 52225'],
                     ['key' => 'header_tel',    'label' => 'Phone number (dial)',   'type' => 'tel',   'default' => '+919820052225',
                      'help' => 'Include country code, no spaces. Used by the tap-to-call link.'],
                 ],
@@ -59,14 +59,14 @@ function templates(): array
                     ['key' => 'store1_city',    'label' => 'Store 1 city',    'type' => 'text',     'default' => 'BENGALURU'],
                     ['key' => 'store1_address', 'label' => 'Store 1 address', 'type' => 'textarea', 'default' => "28, Traan El Dorado, Lavelle Cross Road,\n7th Cross Road, Bengaluru, Karnataka 560001"],
                     ['key' => 'store1_cta',     'label' => 'Store 1 button text', 'type' => 'text', 'default' => 'VISIT THE STORE'],
-                    ['key' => 'store1_url',     'label' => 'Store 1 button link', 'type' => 'url',  'default' => 'https://maps.google.com/'],
+                    ['key' => 'store1_url',     'label' => 'Store 1 button link', 'type' => 'url',  'default' => 'https://share.google/PiChAYlW2xQhi0UgG'],
 
                     ['key' => 'store2_on',      'label' => 'Show store 2',    'type' => 'toggle',   'default' => '1'],
                     ['key' => 'store2_image',   'label' => 'Store 2 photo',   'type' => 'image',    'default' => 'assets/img/store-newdelhi.jpg'],
                     ['key' => 'store2_city',    'label' => 'Store 2 city',    'type' => 'text',     'default' => 'NEW DELHI'],
                     ['key' => 'store2_address', 'label' => 'Store 2 address', 'type' => 'textarea', 'default' => "D-59, Second Floor, Defence Colony,\nNew Delhi 110024"],
                     ['key' => 'store2_cta',     'label' => 'Store 2 button text', 'type' => 'text', 'default' => 'VISIT THE STORE'],
-                    ['key' => 'store2_url',     'label' => 'Store 2 button link', 'type' => 'url',  'default' => 'https://maps.google.com/'],
+                    ['key' => 'store2_url',     'label' => 'Store 2 button link', 'type' => 'url',  'default' => 'https://share.google/06Its8Hi9goOPqAmb'],
 
                     ['key' => 'store3_on',      'label' => 'Show store 3',    'type' => 'toggle',   'default' => '0'],
                     ['key' => 'store3_image',   'label' => 'Store 3 photo',   'type' => 'image',    'default' => ''],
@@ -88,7 +88,7 @@ function templates(): array
 
                     ['key' => 'call_on',      'label' => 'Show "Call us" tile', 'type' => 'toggle', 'default' => '1'],
                     ['key' => 'call_title',   'label' => 'Call tile title',     'type' => 'text',   'default' => 'CALL US'],
-                    ['key' => 'call_number',  'label' => 'Call tile number',    'type' => 'text',   'default' => '98200 52225'],
+                    ['key' => 'call_number',  'label' => 'Call tile number',    'type' => 'text',   'default' => '+91 98200 52225'],
                     ['key' => 'call_tel',     'label' => 'Call tile dial link', 'type' => 'tel',    'default' => '+919820052225'],
 
                     ['key' => 'wa_on',        'label' => 'Show WhatsApp tile',  'type' => 'toggle', 'default' => '1'],
@@ -110,7 +110,7 @@ function templates(): array
                     // to white so it reads against the yellow background.
                     ['key' => 'web_logo',     'label' => 'Website tile logo',   'type' => 'image',  'default' => 'assets/img/logo-white.png'],
                     ['key' => 'web_title',    'label' => 'Website tile text',   'type' => 'text',   'default' => 'VISIT THE WEBSITE'],
-                    ['key' => 'web_url',      'label' => 'Website link',        'type' => 'url',    'default' => 'https://www.technogym.com/in/'],
+                    ['key' => 'web_url',      'label' => 'Website link',        'type' => 'url',    'default' => 'https://www.technogym.com/en-IN/'],
                 ],
 
                 'Footer' => [
