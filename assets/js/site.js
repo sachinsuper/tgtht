@@ -103,6 +103,22 @@
   /* --------------------------------------------------------- tracking -- */
   // Fires a GA4 / GTM / Meta Pixel event for every CTA, so ad campaigns can
   // optimise on real actions. Safe no-op if no tag is installed.
+  //
+  // Alongside the generic CTAClick custom event, taps that show clear intent
+  // to reach the store also fire one of Meta's own named "standard events" --
+  // the ones its Ads Manager campaign objectives and reporting are built
+  // around. The one CTA that actually captures a lead (the call-back form)
+  // is deliberately NOT fired from here: a click only means someone tapped
+  // Submit, not that the number passed validation and was saved. That one
+  // fires as 'Lead' straight from the page template instead, only after
+  // the server confirms the submission went through.
+  var META_STANDARD_EVENT = {
+    'header-call':    'Contact',
+    'tile-call':      'Contact',
+    'tile-whatsapp':  'Contact',
+    'tile-website':   'ViewContent',
+  };
+
   document.addEventListener('click', function (ev) {
     var el = ev.target.closest('[data-track]');
     if (!el) return;
@@ -110,7 +126,11 @@
     try {
       if (window.dataLayer) window.dataLayer.push({ event: 'cta_click', cta: label });
       if (typeof window.gtag === 'function') window.gtag('event', 'cta_click', { cta: label });
-      if (typeof window.fbq === 'function') window.fbq('trackCustom', 'CTAClick', { cta: label });
+      if (typeof window.fbq === 'function') {
+        window.fbq('trackCustom', 'CTAClick', { cta: label });
+        var std = META_STANDARD_EVENT[label] || (label.indexOf('store-') === 0 ? 'FindLocation' : null);
+        if (std) window.fbq('track', std, { cta: label });
+      }
     } catch (e) { /* never break the page for analytics */ }
   }, true);
 })();

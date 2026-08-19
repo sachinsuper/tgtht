@@ -253,5 +253,41 @@ $formError = match ($_GET['err'] ?? '') {
 </footer>
 
 <script src="<?= e(asset_url('assets/js/site.js')) ?>" defer></script>
+
+<?php if ($submitted): ?>
+<!-- Meta Pixel standard "Lead" event -- fires only once, on the page load
+     right after the server confirms the call-back form was received
+     (?sent=1). A click on Submit does not reach here on its own; an
+     invalid number or an expired token redirects with ?err instead and
+     never sets $submitted, so those never count as a lead. -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    try {
+      if (typeof window.fbq === 'function') window.fbq('track', 'Lead', { cta: 'tile-callback' });
+    } catch (e) { /* never break the page for analytics */ }
+  });
+</script>
+<?php endif; ?>
+
+<?php if ($on('wa_on')): ?>
+<!-- Chat360 WhatsApp redirect widget -- only loaded on pages where the
+     WhatsApp tile is switched on. -->
+<script>
+    (function (widgetHash) {
+      var s = document.createElement("script");
+      s.async = true;
+      s.src =
+        "https://app.chat360.io/widget/chatbox/common_scripts/whatsapp_redirect/script.js";
+
+      s.onload = function () {
+        if (window.loadChat360Widget) {
+          window.loadChat360Widget(widgetHash);
+        }
+      };
+
+      document.body.appendChild(s);
+    })("e5b2b069-d1f2-4aec-8df3-04d768bef6bb");
+</script>
+<?php endif; ?>
 </body>
 </html>
